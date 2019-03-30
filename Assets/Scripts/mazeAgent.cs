@@ -52,10 +52,16 @@ public class mazeAgent : Agent
     {
 
         // Add raycast perception observations for pillars and walls
-        float rayDistance = 20f;
-        float[] rayAngles = { 30f };
-        string[] detectableObjects = { "pillar", "wall", "Coin" };
-        AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
+        float[] rayAngles = { 0f, 45f, 90f, 135f, 180f, 225f, 270f, 315f };
+
+        float rayDistance = 2f;
+        string[] blockingObjects = { "pillar", "wall", "Coin" };
+        AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, blockingObjects, 0f, 0f));
+
+        // Add raycast perception observations for coins
+        rayDistance = 10f;
+        string[] goalObjects = { "Coin" };
+        AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, goalObjects, 0f, 0f));
 
         // Target and Agent positions
         AddVectorObs(this.transform.position);
@@ -67,7 +73,7 @@ public class mazeAgent : Agent
     }
 
 
-    public float speed = 10;
+    public float speed = 40;
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         // Actions, size = 2
@@ -107,7 +113,7 @@ public class mazeAgent : Agent
         }
         else
         {
-            AddReward(-0.01f);
+            //AddReward(-0.01f);
             if (mAudioSource != null && HitSound != null && coll.relativeVelocity.magnitude > 2f)
             {
                 mAudioSource.PlayOneShot(HitSound, coll.relativeVelocity.magnitude);
@@ -132,7 +138,7 @@ public class mazeAgent : Agent
         if (other.gameObject.tag.Equals("Coin"))
         {
 
-            AddReward(1.0f);
+            AddReward(0.5f);
             numCoins -= 1;
 
             Debug.Log("Coins =");
@@ -140,7 +146,7 @@ public class mazeAgent : Agent
 
             if (numCoins == 0)
             {
-                AddReward(3.0f);
+                AddReward(1.0f);
                 Debug.Log("Score =");
                 Debug.Log(GetCumulativeReward());
                 if (mAudioSource != null && JumpSound != null)

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 324}
   m_MaxSize: {x: 10054, y: 8024}
   vertical: 0
-  controlID: 70
+  controlID: 56
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -150,7 +150,7 @@ MonoBehaviour:
     y: 0
     width: 1890
     height: 1035
-  m_MinSize: {x: 950, y: 374}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 324}
   m_MaxSize: {x: 6052, y: 8024}
   vertical: 1
-  controlID: 71
+  controlID: 57
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 200}
   m_MaxSize: {x: 6052, y: 4000}
   vertical: 0
-  controlID: 72
+  controlID: 58
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -264,8 +264,8 @@ MonoBehaviour:
     y: 0
     width: 1109
     height: 600
-  m_MinSize: {x: 404, y: 124}
-  m_MaxSize: {x: 2052, y: 2072}
+  m_MinSize: {x: 400, y: 100}
+  m_MaxSize: {x: 2048, y: 2048}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 18}
@@ -432,20 +432,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Brains
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Brains
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Volumes/Promise Pegasus/Documents/Unity/MazeRunner
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 88320000
-    m_LastClickedID: 12936
-    m_ExpandedIDs: 0000000088320000
+    m_SelectedIDs: a2290000
+    m_LastClickedID: 10658
+    m_ExpandedIDs: 000000004a290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -473,7 +473,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000088320000
+    m_ExpandedIDs: 000000004a290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -498,8 +498,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 28380000
-    m_LastClickedInstanceID: 14376
+    m_SelectedInstanceIDs: 6c2a0000
+    m_LastClickedInstanceID: 10860
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300002c2e0000ea0c0000f82d0000302e0000fa2d00004c2f0000002e0000e82e0000b42e00005c350000482e0000
     m_RenameOverlay:
@@ -592,23 +592,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 28380000
-      m_LastClickedID: 14376
-      m_ExpandedIDs: 50f8ffffb8f8ffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: cefbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Academy
+        m_OriginalName: Academy
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 12096
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 

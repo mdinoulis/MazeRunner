@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 1479822279306025853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a3aea66c80209468a4c613fe0c6ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ViewCamera: {fileID: 0}
+  ViewCamera: {fileID: 2255456084516879923, guid: e3738c2ab11af48619a862bb7f75d736,
+    type: 3}
   JumpSound: {fileID: 8300000, guid: 311bde2d611c7744e9b87713df344dd4, type: 3}
   HitSound: {fileID: 8300000, guid: a5548be9a9e5a6d43adb6e184f7b96bb, type: 3}
   CoinSound: {fileID: 8300000, guid: 50dee191f1af3994c99e69c8c4e2c104, type: 3}

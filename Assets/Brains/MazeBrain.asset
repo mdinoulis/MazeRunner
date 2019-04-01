@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MazeBrain
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 69
+    vectorObservationSize: 51
     numStackedVectorObservations: 1
     vectorActionSize: 02000000
     cameraResolutions: []
@@ -21,5 +21,5 @@ MonoBehaviour:
     - 
     - 
     vectorActionSpaceType: 1
-  model: {fileID: 0}
+  model: {fileID: 11400000, guid: 15d3d4f70ab1147e595c2d4f99672e30, type: 3}
   inferenceDevice: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MazePlayer
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 69
+    vectorObservationSize: 51
     numStackedVectorObservations: 1
     vectorActionSize: 02000000
     cameraResolutions: []

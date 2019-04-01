@@ -283,7 +283,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9f6d0fc0a54b74a498cf46be45d2244c, type: 2}
     _brainsToControl:
     - {fileID: 11400000, guid: 9f6d0fc0a54b74a498cf46be45d2244c, type: 2}
-  maxSteps: 10000
+  maxSteps: 50000
   trainingConfiguration:
     width: 80
     height: 80
@@ -573,17 +573,17 @@ PrefabInstance:
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.49
+      value: 17.03
       objectReference: {fileID: 0}
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.43
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.45014903
+      value: 0.5034678
       objectReference: {fileID: 0}
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}
@@ -598,7 +598,7 @@ PrefabInstance:
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.89295346
+      value: 0.86401397
       objectReference: {fileID: 0}
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}
@@ -608,7 +608,7 @@ PrefabInstance:
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 53.506004
+      value: 60.459003
       objectReference: {fileID: 0}
     - target: {fileID: 2255456084516879926, guid: e3738c2ab11af48619a862bb7f75d736,
         type: 3}

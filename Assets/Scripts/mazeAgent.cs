@@ -6,7 +6,7 @@ using MLAgents;
 public class mazeAgent : Agent
 {
 
-    public GameObject ViewCamera = null;
+    public Camera ViewCamera = null;
     public AudioClip JumpSound = null;
     public AudioClip HitSound = null;
     public AudioClip CoinSound = null;
@@ -16,11 +16,15 @@ public class mazeAgent : Agent
     private Rigidbody mRigidBody = null;
     private AudioSource mAudioSource = null;
     private bool mFloorTouched = false;
+    private bool coinFound = false;
+    private bool wallCollision = false;
 
     private RayPerception rayPerception;
 
     public bool done = false;
     public int numCoins = 0;
+
+    // ViewCamera = Instantiate(gameObject.AddComponent<Camera>(), new Vector3(0, 0, 0), Quaternion.identity) as Camera
 
     public void setNumCoins(int number)
     {
@@ -32,7 +36,7 @@ public class mazeAgent : Agent
     {
         rBody = GetComponent<Rigidbody>();
         mAudioSource = GetComponent<AudioSource>();
-        rayPerception = GetComponent<RayPerception>();
+        rayPerception = GetComponent<RayPerception>();;
         done = false;
     }
 
@@ -52,16 +56,17 @@ public class mazeAgent : Agent
     {
 
         // Add raycast perception observations for pillars and walls
-        float[] rayAngles = { 0f, 45f, 90f, 135f, 180f, 225f, 270f, 315f };
+        float[] rayAngles = { 0f, 90f, 180f, 270f };
 
         float rayDistance = 2f;
         string[] blockingObjects = { "pillar", "wall", "Coin" };
         AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, blockingObjects, 0f, 0f));
 
         // Add raycast perception observations for coins
+        float[] rayAnglesCoin = { 0f, 45, 90f, 135, 180f, 225f, 270f, 315f};
         rayDistance = 10f;
         string[] goalObjects = { "Coin" };
-        AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, goalObjects, 0f, 0f));
+        AddVectorObs(rayPerception.Perceive(rayDistance, rayAnglesCoin, goalObjects, 0f, 0f));
 
         // Target and Agent positions
         AddVectorObs(this.transform.position);
@@ -70,10 +75,24 @@ public class mazeAgent : Agent
         AddVectorObs(rBody.velocity.x);
         AddVectorObs(rBody.velocity.z);
 
+        // Has a coinn been found this time?
+        AddVectorObs(coinFound);
+        if (coinFound)
+        {
+            coinFound = false;
+        }
+
+        // Collision wihth wall
+        AddVectorObs(wallCollision);
+        if (wallCollision)
+        {
+            wallCollision = false;
+        }
+
     }
 
 
-    public float speed = 40;
+    public float speed = 200;
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         // Actions, size = 2
@@ -84,23 +103,16 @@ public class mazeAgent : Agent
 
         if (ViewCamera != null)
         {
+            // 1st person camer view
             Vector3 direction = (Vector3.up * 2 + Vector3.back) * 2;
-            RaycastHit hit;
-            Debug.DrawLine(transform.position, transform.position + direction, Color.red);
-            if (Physics.Linecast(transform.position, transform.position + direction, out hit))
-            {
-                ViewCamera.transform.position = hit.point;
-            }
-            else
-            {
-                ViewCamera.transform.position = transform.position + direction;
-            }
+            ViewCamera.transform.position = transform.position + direction;
             ViewCamera.transform.LookAt(transform.position);
         }
 
+
     }
 
-    void OnCollisionEnter(Collision coll)
+        void OnCollisionEnter(Collision coll)
     {
 
         if (coll.gameObject.tag.Equals("Floor"))
@@ -113,7 +125,7 @@ public class mazeAgent : Agent
         }
         else
         {
-            //AddReward(-0.01f);
+            // AddReward(-0.01f);
             if (mAudioSource != null && HitSound != null && coll.relativeVelocity.magnitude > 2f)
             {
                 mAudioSource.PlayOneShot(HitSound, coll.relativeVelocity.magnitude);
@@ -121,6 +133,16 @@ public class mazeAgent : Agent
         }
 
     }
+
+    void OnCollisionStay(Collision coll)
+    {
+        if (!coll.gameObject.tag.Equals("Floor"))
+        {
+            wallCollision = true;
+            AddReward(-0.0005f);
+        }
+
+    } 
 
     void OnCollisionExit(Collision coll)
     {
@@ -138,15 +160,14 @@ public class mazeAgent : Agent
         if (other.gameObject.tag.Equals("Coin"))
         {
 
-            AddReward(0.5f);
+            AddReward(1.0f);
             numCoins -= 1;
+            coinFound = true;
 
-            Debug.Log("Coins =");
-            Debug.Log(numCoins);
 
             if (numCoins == 0)
             {
-                AddReward(1.0f);
+                AddReward(3.0f);
                 Debug.Log("Score =");
                 Debug.Log(GetCumulativeReward());
                 if (mAudioSource != null && JumpSound != null)
